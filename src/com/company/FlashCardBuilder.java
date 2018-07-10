@@ -2,6 +2,8 @@ package com.company;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class FlashCardBuilder {
@@ -58,13 +60,59 @@ public class FlashCardBuilder {
         mainPanel.add(aJLabel);
         mainPanel.add(aJScrollPane);
         mainPanel.add(nextButton);
+        nextButton.addActionListener(new NextCardListener());
+
+        //MenuBar
+        JMenuBar menuBar = new JMenuBar();
+        JMenu fileMenu = new JMenu("File");
+        JMenuItem newMenuItem = new JMenuItem("New");
+        JMenuItem saveMenuItem = new JMenuItem("Save");
+
+        // Add menu items to menu name
+        fileMenu.add(newMenuItem);
+        fileMenu.add(saveMenuItem);
+
+        // Add menu name to menu bar
+        menuBar.add(fileMenu);
+
+        //Add eventListeners
+        newMenuItem.addActionListener(new NewMenuItemListener());
+        saveMenuItem.addActionListener(new SaveMenuItemListener());
+
 
         // Add to the frame
+        frame.setJMenuBar(menuBar);
         frame.getContentPane().add(BorderLayout.CENTER, mainPanel);
         frame.setSize(500, 500);
         frame.setVisible(true);
 
 
+    }
+
+
+    class NextCardListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            System.out.println("Button Clicked");
+        }
+    }
+
+    class NewMenuItemListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            System.out.println("New Menu Clicked");
+        }
+    }
+
+    class SaveMenuItemListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            System.out.println("Save Menu Clicked");
+
+        }
     }
 
     public static void main(String[] args) {
