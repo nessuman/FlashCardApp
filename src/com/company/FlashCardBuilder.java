@@ -50,6 +50,9 @@ public class FlashCardBuilder {
         //Button
         JButton nextButton = new JButton("Next Card");
 
+        // CardList
+        cardList = new ArrayList<FlashCard>();
+
         // Create a few labels
         JLabel qJLabel = new JLabel("Question");
         JLabel aJLabel = new JLabel("Answer");
@@ -94,9 +97,16 @@ public class FlashCardBuilder {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("Button Clicked");
+            // Create a flash card
+            FlashCard card = new FlashCard(question.getText(), answer.getText());
+            cardList.add(card);
+            clearCard();
+
+            System.out.println("Size of ArrayList: " + cardList.size());
+
         }
     }
+
 
     class NewMenuItemListener implements ActionListener {
 
@@ -113,6 +123,12 @@ public class FlashCardBuilder {
             System.out.println("Save Menu Clicked");
 
         }
+    }
+
+    private void clearCard() {
+        question.setText("");
+        answer.setText("");
+        question.requestFocus();
     }
 
     public static void main(String[] args) {
