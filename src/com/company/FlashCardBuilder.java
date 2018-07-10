@@ -145,7 +145,6 @@ public class FlashCardBuilder {
     private void saveFile(File selectedFile) {
 
         try {
-
             BufferedWriter writer = new BufferedWriter(new FileWriter(selectedFile));
 
             Iterator<FlashCard> cardIterator = cardList.iterator();
